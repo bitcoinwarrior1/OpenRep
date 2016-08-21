@@ -10,16 +10,23 @@ public partial class _Default : System.Web.UI.Page
     /*
      *Private testnet network:
      * 
-     * PS C:\Users\sangalli\Desktop> geth --genesis UTSGenesis.json --networkid "1100" 
-     * --maxpeers 20 --rpc --port 8545 console
-     * */
+     * PS C:\Users\sangalli\Desktop> 
+     * geth --genesis UTSGenesis.json --networkid "1100" --maxpeers 20 --rpc --port 8545 console
+     * 
+     */
+
 
     protected void Page_Load(object sender, EventArgs e)
+    {
+        init();
+        //var contractAddress = "0xc8f097018fbb454cbf4dce974d985467ae146061";
+    }
+
+    protected void init()
     {
         var nWeb3 = new Nethereum.Web3.Web3();
         web3 = nWeb3;
         var abi = @"[{""constant"":false,""inputs"":[{""name"":""username"",""type"":""string""},{""name"":""location"",""type"":""string""}],""name"":""addUser"",""outputs"":[{""name"":"",""type"":""string""}],""type"":""function""},{""constant"":false,""inputs"":[],""name"":""burnCoins"",""outputs"":[{""name"":"",""type"":""uint256""}],""type"":""function""},{""constant"":false,""inputs"":[{""name"":""vendor"",""type"":""address""},{""name"":""recipient"",""type"":""address""}],""name"":""trade"",""outputs"":[],""type"":""function""},{""constant"":false,""inputs"":[{""name"":""vendor"",""type"":""address""},{""name"":""isPositive"",""type"":""bool""},{""name"":""message"",""type"":""string""}],""name"":""giveReputation"",""outputs"":[],""type"":""function""},{""constant"":false,""inputs"":[{""name"":""user"",""type"":""address""}],""name"":""showBurnedCoins"",""outputs"":[{""name"":"",""type"":""uint256""}],""type"":""function""},{""constant"":false,""inputs"":[{""name"":""user"",""type"":""address""}],""name"":""viewReputation"",""outputs"":[{""name"":"",""type"":""uint256""},{""name"":"",""type"":""uint256""},{""name"":"",""type"":""uint256""}],""type"":""function""},{""anonymous"":false,""inputs"":[{""indexed"":true,""name"":""user"",""type"":""address""},{""indexed"":true,""name"":""amountBurned"",""type"":""uint256""}],""name"":""_coinsBurned"",""type"":""event""},{""anonymous"":false,""inputs"":[{""indexed"":true,""name"":""user"",""type"":""address""},{""indexed"":true,""name"":""message"",""type"":""string""}],""name"":""_positiveReputation"",""type"":""event""},{""anonymous"":false,""inputs"":[{""indexed"":true,""name"":""user"",""type"":""address""},{""indexed"":true,""name"":""message"",""type"":""string""}],""name"":""_negativeReputation"",""type"":""event""},{""anonymous"":false,""inputs"":[{""indexed"":true,""name"":""username"",""type"":""string""},{""indexed"":true,""name"":""location"",""type"":""string""},{""indexed"":true,""name"":""user"",""type"":""address""}],""name"":""_addUser"",""type"":""event""},{""anonymous"":false,""inputs"":[{""indexed"":true,""name"":""vendor"",""type"":""address""},{""indexed"":true,""name"":""buyer"",""type"":""address""}],""name"":""_newTrade"",""type"":""event""},{""anonymous"":false,""inputs"":[{""indexed"":true,""name"":""user"",""type"":""address""},{""indexed"":true,""name"":""positive"",""type"":""uint256""},{""indexed"":true,""name"":""negative"",""type"":""uint256""},{""indexed"":false,""name"":""total"",""type"":""uint256""}],""name"":""_viewedReputation"",""type"":""event""}]";
-        //var contractAddress = "0xc8f097018fbb454cbf4dce974d985467ae146061";
         var contractAddress = "0xd53c3dc2f3fcf1779b68ea8e441d857b4af5a413";
         Reputation = web3.Eth.GetContract(abi, contractAddress);
     }
@@ -35,7 +42,7 @@ public partial class _Default : System.Web.UI.Page
     protected async void placeFeedback(string address, bool isPositive, string message)
     {
         var setRep = Reputation.GetFunction("giveReputation");
-        var result = await setRep.CallAsync<string, bool, string>(address, isPositive, message);
+        var result = await setRep.sendTransactionAsync<string, bool, string>(address, isPositive, message);
         Session["feedback"] = result.toString();
     }
 
