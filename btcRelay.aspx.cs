@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using NBitcoin;
+using QBitNinja.Client;
 
 public partial class btcRelay : System.Web.UI.Page
 {
@@ -32,20 +29,39 @@ public partial class btcRelay : System.Web.UI.Page
         btcRelayContract = web3.Eth.GetContract(relayAbi, relayAddr);
     }
 
+    protected bool verifySig()
+    {
+        var address = new BitcoinPubKeyAddress(btcAddrTextBox.Text);
+        bool isValidSig = address.VerifyMessage("relay", sigTextBox.Text);
+        return isValidSig;
+    }
+
     protected void relayProofOfBurn(string txBytes, string txIndex, string merkleSibling,
-    string txBlockHash, string objParam)
+    string txBlockHash, string objParam, decimal value)
     {
         var result = btcRelayContract.verifyTx.call(txBytes, txIndex, merkleSibling, txBlockHash, objParam);
-        Console.WriteLine(result);
+        if(result == true)
+        {
+            //call reputation contract and add btc proof of burn
+        }
     }
 
     protected void getTxInfo(string address, string txId)
     {
-
+        var client = new QBitNinjaClient(Network.Main);
+        var transactionId = uint256.Parse(txId);
+        var transactionResponse = client.GetTransaction(transactionId).Result;
     }
 
     protected void submitButton_Click(object sender, EventArgs e)
     {
-        getTxInfo(btcAddrTextBox.Text, txIdTextBox.Text);
+        if (verifySig())
+        {
+            getTxInfo(btcAddrTextBox.Text, txIdTextBox.Text);
+        }
+        else
+        {
+            Console.WriteLine("Signature is invalid");
+        }
     }
 }
