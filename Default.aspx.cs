@@ -12,7 +12,7 @@ public partial class _Default : System.Web.UI.Page
      *Private testnet network:
      * 
      * PS C:\Users\sangalli\Desktop> 
-     * geth --genesis UTSGenesis.json --networkid "1100" --maxpeers 20 --rpc --port 8545 console
+     * geth --genesis UTSGenesis.json --networkid "1100"--rpc console
      * 
      */
 
@@ -25,7 +25,7 @@ public partial class _Default : System.Web.UI.Page
 
     protected void init()
     {
-        web3 = new Nethereum.Web3.Web3();
+        web3 = new Nethereum.Web3.Web3("http://localhost:8545/");
 
         string abi = @"[{'constant':false,'inputs':[{'name':'username','type':'string'},
         {'name':'location','type':'string'}],'name':'addUser','outputs':
@@ -61,9 +61,10 @@ public partial class _Default : System.Web.UI.Page
     protected async void getReputation(string address)
     {
         var getRep = Reputation.GetFunction("viewReputation");
-        var result = await getRep.CallAsync<string>(address);
-        Session["views"] = result.toString();
-        Response.Redirect("views.aspx");
+        var result = await getRep.CallAsync<int>(address);
+        Session["views"] = result;
+        Console.WriteLine(result);
+        Response.Redirect("views.aspx", false);
     }
 
     protected async void placeFeedback(string address, bool isPositive, string message)
