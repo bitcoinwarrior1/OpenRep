@@ -18,6 +18,7 @@ contract Reputation {
     address [] traders;
     bool [] givenReputation;
     uint burnedCoins;
+    uint burnedBitcoin;
   }
 
   mapping (address => profile) users;
