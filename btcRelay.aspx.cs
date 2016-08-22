@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using NBitcoin;
 
 public partial class btcRelay : System.Web.UI.Page
 {
@@ -32,6 +33,13 @@ public partial class btcRelay : System.Web.UI.Page
         //btcRelayContract = web3.Eth.GetContract(relayAbi, relayAddr);
     }
 
+    protected bool verifySig()
+    {
+        var address = new BitcoinPubKeyAddress(btcAddrTextBox.Text);
+        bool isValidSig = address.VerifyMessage("relay", sigTextBox.Text);
+        return isValidSig;
+    }
+
     protected void relayProofOfBurn(string txBytes, string txIndex, string merkleSibling,
     string txBlockHash, string objParam)
     {
@@ -46,6 +54,13 @@ public partial class btcRelay : System.Web.UI.Page
 
     protected void submitButton_Click(object sender, EventArgs e)
     {
-        getTxInfo(btcAddrTextBox.Text, txIdTextBox.Text);
+        if (verifySig())
+        {
+            getTxInfo(btcAddrTextBox.Text, txIdTextBox.Text);
+        }
+        else
+        {
+            Console.WriteLine("Signature is invalid");
+        }
     }
 }
