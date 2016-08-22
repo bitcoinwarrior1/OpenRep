@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using NBitcoin;
+using QBitNinja.Client;
 
 public partial class btcRelay : System.Web.UI.Page
 {
@@ -30,7 +26,7 @@ public partial class btcRelay : System.Web.UI.Page
         {'inputs': [{'indexed': true, 'type': 'uint256', 'name': 'blockHash'}, {'indexed': true, 'type': 'int256', 'name': 'returnCode'}], 'type': 'event', 'name': 'GetHeader(uint256,int256)'}, {'inputs': [{'indexed': true, 'type': 'uint256', 'name': 'txHash'}, {'indexed': true, 'type': 'int256', 'name': 'returnCode'}], 'type': 'event', 'name': 'RelayTransaction(uint256,int256)'}, {'inputs': [{'indexed': true, 'type': 'uint256', 'name': 'blockHash'}, {'indexed': true, 'type': 'int256', 'name': 'returnCode'}], 'type': 'event', 'name': 'StoreHeader(uint256,int256)'}, {'inputs': [{'indexed': true, 'type': 'uint256', 'name': 'txHash'}, {'indexed': true, 'type': 'int256', 'name': 'returnCode'}], 'type': 'event', 'name': 'VerifyTransaction(uint256,int256)'}]'";
 
         var relayAddr = "0x5770345100a27b15f5b40bec86a701f888e8c601";
-        //btcRelayContract = web3.Eth.GetContract(relayAbi, relayAddr);
+        btcRelayContract = web3.Eth.GetContract(relayAbi, relayAddr);
     }
 
     protected bool verifySig()
@@ -41,15 +37,20 @@ public partial class btcRelay : System.Web.UI.Page
     }
 
     protected void relayProofOfBurn(string txBytes, string txIndex, string merkleSibling,
-    string txBlockHash, string objParam)
+    string txBlockHash, string objParam, decimal value)
     {
         var result = btcRelayContract.verifyTx.call(txBytes, txIndex, merkleSibling, txBlockHash, objParam);
-        Console.WriteLine(result);
+        if(result == true)
+        {
+            //call reputation contract and add btc proof of burn
+        }
     }
 
     protected void getTxInfo(string address, string txId)
     {
-
+        var client = new QBitNinjaClient(Network.Main);
+        var transactionId = uint256.Parse(txId);
+        var transactionResponse = client.GetTransaction(transactionId).Result;
     }
 
     protected void submitButton_Click(object sender, EventArgs e)
