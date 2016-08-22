@@ -29,7 +29,7 @@ public partial class btcRelay : System.Web.UI.Page
         {'inputs': [{'indexed': true, 'type': 'uint256', 'name': 'blockHash'}, {'indexed': true, 'type': 'int256', 'name': 'returnCode'}], 'type': 'event', 'name': 'GetHeader(uint256,int256)'}, {'inputs': [{'indexed': true, 'type': 'uint256', 'name': 'txHash'}, {'indexed': true, 'type': 'int256', 'name': 'returnCode'}], 'type': 'event', 'name': 'RelayTransaction(uint256,int256)'}, {'inputs': [{'indexed': true, 'type': 'uint256', 'name': 'blockHash'}, {'indexed': true, 'type': 'int256', 'name': 'returnCode'}], 'type': 'event', 'name': 'StoreHeader(uint256,int256)'}, {'inputs': [{'indexed': true, 'type': 'uint256', 'name': 'txHash'}, {'indexed': true, 'type': 'int256', 'name': 'returnCode'}], 'type': 'event', 'name': 'VerifyTransaction(uint256,int256)'}]'";
 
         var relayAddr = "0x5770345100a27b15f5b40bec86a701f888e8c601";
-        btcRelayContract = web3.Eth.GetContract(relayAbi, relayAddr);
+        //btcRelayContract = web3.Eth.GetContract(relayAbi, relayAddr);
     }
 
     protected void relayProofOfBurn(string txBytes, string txIndex, string merkleSibling,

@@ -30,9 +30,15 @@
   <link rel="stylesheet" href="css/skeleton.css"/>
   <link rel="stylesheet" href="css/main.css"/>
 
-    <p>
-        <br />
-    </p>
+
+    <div>
+        <ul>
+        <li><a href ="./btcRelay.aspx"> Bitcoin Proof Of Burn</a></li>
+        </ul>
+    </div>
+
+    <br />
+
 
     <form id="form1" runat="server">
     <div>
