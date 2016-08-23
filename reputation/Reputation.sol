@@ -28,7 +28,7 @@ contract Reputation {
   event _newTrade(address indexed vendor, address indexed buyer);
   event _viewedReputation(address indexed user, uint indexed positive, uint indexed negative, uint total);
 
-  function(){ if(msg.value != 0.0001 ether) throw; } //if not paying the fee then throw and refund
+  function(){ if(msg.value != 0.001 ether) throw; } //if not paying the fee then throw and refund
 
   function Reputation(){ owner = msg.sender; }
 
@@ -42,11 +42,11 @@ contract Reputation {
     return username;
   }
 
-  function trade(address vendor, address recipient) paid {
-      if(msg.sender == vendor && vendor != recipient){
-          users[vendor].traders.push(recipient);
+  function trade(address vendor) paid {
+      if(msg.sender != vendor){
+          users[vendor].traders.push(msg.sender);
           users[vendor].givenReputation.push(false);
-          _newTrade(vendor,recipient);
+          _newTrade(vendor,msg.sender);
       }
   }
 

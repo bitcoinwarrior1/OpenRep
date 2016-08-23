@@ -4,7 +4,13 @@ contract proofOfBurn is Reputation{
 
   address proofOfBurnAddr = 0x0000000000000000000000000000000000000000;
   event _coinsBurned(address indexed user, uint indexed amountBurned);
-  address btcRelay = "0x41f274c0023f83391de4e0733c609df5a124c3d4"; //mainnet
+  
+  modifier relayOnly(){
+      if(msg.sender != 0x41f274c0023f83391de4e0733c609df5a124c3d4){
+          throw;
+      }
+      _
+  }
 
   function showBurnedCoins(address user) returns (uint){
     return users[user].burnedCoins;
@@ -18,13 +24,11 @@ contract proofOfBurn is Reputation{
     }
     else throw;
   }
-
-  function bitcoinProofOfBurn(uint amount, address user){
-    if(msg.sender == btcRelay){
-      users[user].burnedBitcoin = amount;
-      return users[user].burnedBitcoin;
-    }
-    else throw;
+  
+  function burnedBitcoin(address burner, uint value) relayOnly returns (uint){
+      return users[burner].burnedBitcoin += value;
   }
 
 }
+
+
