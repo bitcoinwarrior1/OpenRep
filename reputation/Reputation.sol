@@ -4,7 +4,7 @@ contract Reputation {
 
   modifier paid() {
     if(msg.value != 0.0001 ether) throw;
-    else{ owner.send(msg.value / 100); } //1% fee
+    else{ owner.send(msg.value / 95); } //5% fee
      _
   } //prevents spam and pays a small fee
 
@@ -18,7 +18,6 @@ contract Reputation {
     address [] traders;
     bool [] givenReputation;
     uint burnedCoins;
-    uint burnedBitcoin;
   }
 
   mapping (address => profile) users;
@@ -69,9 +68,9 @@ contract Reputation {
     }
   }
 
-  function viewReputation(address user) returns (uint, uint, uint, [] string){
-    _viewedReputation(user,users[user].positive, users[user].negative, users[user].total, users[user].messages);
-    return(users[user].positive, users[user].negative, users[user].total, users[user].messages);
+  function viewReputation(address user) returns (uint, uint, uint){
+    _viewedReputation(user,users[user].positive, users[user].negative, users[user].total);
+    return(users[user].positive, users[user].negative, users[user].total);
   }
 
 }
