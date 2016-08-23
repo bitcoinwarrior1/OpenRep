@@ -47,3 +47,5 @@ reputation.trade.sendTransaction(eth.accounts[0], eth.accounts[1], { from: eth.a
 reputation.giveReputation.sendTransaction(eth.accounts[0], true, "good trader", { from: eth.accounts[0] });
 
 reputation.viewReputation.sendTransaction(eth.accounts[0], { from: eth.accounts[0] });
+
+eth.sendTransaction({ to: "0xc327030a2eb9b680ffe2ac5ac1f234eecdcec346", from: eth.accounts[0], value: 1000000000000000 })

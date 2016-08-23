@@ -44,7 +44,7 @@ public partial class _Default : System.Web.UI.Page
     protected async void placeFeedback(string address, bool isPositive, string message)
     {
         var setRep = Reputation.GetFunction("giveReputation");
-        var result = await setRep.SendTransactionAsync(myPrivateAddr, address, isPositive, message);
+        var result = await setRep.SendTransactionAsync(myAddress, address, isPositive, message);
         Session["feedback"] = result;
     }
 
