@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using Nethereum.Web3;
+﻿using System;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -61,7 +59,7 @@ public partial class _Default : System.Web.UI.Page
             placeFeedback(placeFeedbackTextBox.Text, false, messageTextBox.Text);
         }
 
-        //getReputation(viewFeedbackTextBox.Text);
+        getReputation(placeFeedbackTextBox.Text);
     }
 
     protected void viewButton_Click(object sender, EventArgs e)
