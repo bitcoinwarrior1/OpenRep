@@ -33,7 +33,9 @@
     <br />
     <div>
         <ul>
-        <li><a href ="./btcRelay.aspx"> Bitcoin Proof Of Burn</a></li>
+            <li><a href ="./Default.aspx"> Home </a></li>
+            <li><a href ="./btcRelay.aspx"> Bitcoin Proof Of Burn</a></li>
+            <li><a href ="./newAccount.aspx"> create account</a></li>
         </ul>
     </div>
 

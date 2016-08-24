@@ -29,13 +29,15 @@
   <link rel="stylesheet" href="css/normalize.css"/>
   <link rel="stylesheet" href="css/skeleton.css"/>
   <link rel="stylesheet" href="css/main.css"/>
-  <div>
-     <br />
-     <br />
-    <ul>
-        <li><a href ="./Default.aspx"> Home</a></li>
-    </ul>
-   </div>
+    <div>
+        <br />
+        <br />
+        <ul>
+            <li><a href ="./Default.aspx"> Home </a></li>
+            <li><a href ="./btcRelay.aspx"> Bitcoin Proof Of Burn</a></li>
+            <li><a href ="./newAccount.aspx"> create account</a></li>
+        </ul>
+    </div>
 
     <form id="form1" runat="server">
     <div>
@@ -45,7 +47,7 @@
                 <td class="auto-style1" style="font-size: x-large; font-weight: bold;">&nbsp;&nbsp; Ethereum Reputation manager</td>
             </tr>
             <tr>
-                <td class="auto-style1">&nbsp;&nbsp;Enter your Btc address which you used to burn coins</td>
+                <td class="auto-style1">&nbsp;&nbsp; Enter your Btc address which you used to burn coins</td>
             </tr>
             <tr>
                 <td class="auto-style5">
