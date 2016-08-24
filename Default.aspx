@@ -27,6 +27,10 @@
             width: 672px;
             margin-left: 50px;
         }
+        .auto-style7 {
+            width: 672px;
+            height: 68px;
+        }
     </style>
 </head>
 <body>
@@ -106,6 +110,22 @@
             </tr>
             <tr>
                 <td class="auto-style3">
+                    &nbsp;&nbsp;&nbsp; Enter your address&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style3">
+                    &nbsp;&nbsp;&nbsp;
+                    <asp:TextBox ID="myAddressTextBox" runat="server"></asp:TextBox>
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style3">
+                    &nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="submitButton" runat="server" OnClick="submitButton_Click" Text="Submit Feedback" Width="171px" />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style3">
                     &nbsp;&nbsp; Enter in a new trade (costs 0.001 ether)</td>
             </tr>
             <tr>
@@ -115,18 +135,12 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style3">
+                <td class="auto-style7">
                     &nbsp;&nbsp;
                     <asp:Button ID="tradeButton" runat="server" OnClick="tradeButton_Click" Text="Enter Trade" />
                     &nbsp;</td>
             </tr>
-            <tr>
-                <td class="auto-style3">
-                    &nbsp;&nbsp;
-                    <asp:Button ID="submitButton" runat="server" OnClick="submitButton_Click" Text="Submit Feedback" Width="171px" />
-                </td>
-            </tr>
-        </table>
+            </table>
     
     </div>
     </form>

@@ -4,7 +4,7 @@ public partial class _Default : System.Web.UI.Page
 {
     public dynamic web3;
     public dynamic Reputation;
-    public string myAddress = "0xdc85a8429998bd4eef79307e556f70bb70d8caf1"; //testnet
+    //public string myAddress = "0xdc85a8429998bd4eef79307e556f70bb70d8caf1"; //testnet
     public string trader = "0xbad81df123f6eb4911f63e024cfae77118b4fbf7"; //testnet trader
 
     /*
@@ -46,7 +46,7 @@ public partial class _Default : System.Web.UI.Page
         statusLabel.Text = "trade entered, thank you!";
     }
 
-    protected async void placeFeedback(string address, bool isPositive, string message)
+    protected async void placeFeedback(string myAddress, string address, bool isPositive, string message)
     {
         var setRep = Reputation.GetFunction("giveReputation");
         var result = await setRep.SendTransactionAsync(myAddress,address, isPositive, message); 
@@ -58,11 +58,11 @@ public partial class _Default : System.Web.UI.Page
     {
         if (feedbackOptions.Equals("positive"))
         {
-            placeFeedback(placeFeedbackTextBox.Text, true, messageTextBox.Text);
+            placeFeedback(myAddressTextBox.Text ,placeFeedbackTextBox.Text, true, messageTextBox.Text);
         }
         else
         {
-            placeFeedback(placeFeedbackTextBox.Text, false, messageTextBox.Text);
+            placeFeedback(myAddressTextBox.Text, placeFeedbackTextBox.Text, false, messageTextBox.Text);
         }
 
         getReputation(placeFeedbackTextBox.Text);
