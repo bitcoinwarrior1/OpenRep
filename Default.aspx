@@ -62,6 +62,16 @@
                 </td>
             </tr>
             <tr>
+                <td class="auto-style3">
+                    &nbsp;&nbsp;&nbsp; Enter your address&nbsp;(needed for all functions)</td>
+            </tr>
+            <tr>
+                <td class="auto-style3">
+                    &nbsp;&nbsp;&nbsp;
+                    <asp:TextBox ID="myAddressTextBox" runat="server"></asp:TextBox>
+                    &nbsp;</td>
+            </tr>
+            <tr>
                 <td class="auto-style1">&nbsp;&nbsp; View reputation (enter ethereum address)</td>
             </tr>
             <tr>
@@ -110,23 +120,13 @@
             </tr>
             <tr>
                 <td class="auto-style3">
-                    &nbsp;&nbsp;&nbsp; Enter your address&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style3">
-                    &nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="myAddressTextBox" runat="server"></asp:TextBox>
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style3">
                     &nbsp;&nbsp;&nbsp;
                     <asp:Button ID="submitButton" runat="server" OnClick="submitButton_Click" Text="Submit Feedback" Width="171px" />
                 </td>
             </tr>
             <tr>
                 <td class="auto-style3">
-                    &nbsp;&nbsp; Enter in a new trade (costs 0.001 ether)</td>
+                    &nbsp;&nbsp; Enter in a new trade</td>
             </tr>
             <tr>
                 <td class="auto-style3">

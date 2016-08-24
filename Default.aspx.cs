@@ -39,10 +39,10 @@ public partial class _Default : System.Web.UI.Page
         Response.Redirect("views.aspx", false);
     }
 
-    protected async void enterTrade(string vendor)
+    protected async void enterTrade(string myAddress, string vendor)
     {
         var trade = Reputation.GetFunction("trade");
-        var result = await trade.SendTransactionAsync(vendor);
+        var result = await trade.SendTransactionAsync(myAddress, vendor);
         statusLabel.Text = "trade entered, thank you!";
     }
 
@@ -75,6 +75,6 @@ public partial class _Default : System.Web.UI.Page
 
     protected void tradeButton_Click(object sender, EventArgs e)
     {
-        enterTrade(vendorTextBox.Text);
+        enterTrade(myAddressTextBox.Text, vendorTextBox.Text);
     }
 }

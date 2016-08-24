@@ -16,7 +16,7 @@ public partial class reputation_newAccount : System.Web.UI.Page
 
     protected async void createAccount(string myAddress, string newUser, string location)
     {
-        var createUser = Reputation.GetFunction("createUser");
+        var createUser = Reputation.GetFunction("addUser");
         var result = await createUser.SendTransactionAsync(myAddress, newUser, location);
         statusLabel.Text = "Account created!";
     }
