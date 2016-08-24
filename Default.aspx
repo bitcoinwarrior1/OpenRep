@@ -22,6 +22,11 @@
             margin-left: 40px;
             height: 39px;
         }
+        .auto-style6 {
+            height: 31px;
+            width: 672px;
+            margin-left: 50px;
+        }
     </style>
 </head>
 <body>
@@ -33,7 +38,9 @@
     <br />
     <div>
         <ul>
-        <li><a href ="./btcRelay.aspx"> Bitcoin Proof Of Burn</a></li>
+            <li><a href ="./Default.aspx"> Home </a></li>
+            <li><a href ="./btcRelay.aspx"> Bitcoin Proof Of Burn</a></li>
+            <li><a href ="./newAccount.aspx"> create account</a></li>
         </ul>
     </div>
 
@@ -45,7 +52,10 @@
     
         <table class="center">
             <tr>
-                <td class="auto-style1" style="font-size: x-large; font-weight: bold;">&nbsp;&nbsp; Ethereum Reputation manager</td>
+                <td class="auto-style6" style="font-size: x-large; font-weight: bold;">&nbsp;&nbsp; Ethereum Reputation manager<br />
+&nbsp;&nbsp;
+                    <asp:Label ID="statusLabel" runat="server" ForeColor="#FF3300"></asp:Label>
+                </td>
             </tr>
             <tr>
                 <td class="auto-style1">&nbsp;&nbsp; View reputation (enter ethereum address)</td>
@@ -64,7 +74,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">&nbsp;&nbsp; Place feedback</td>
+                <td class="auto-style1">&nbsp;&nbsp; Place feedback (enter address of trading partner)</td>
             </tr>
             <tr>
                 <td class="auto-style4">
@@ -93,6 +103,22 @@
                     &nbsp;&nbsp;&nbsp;
                     <asp:TextBox ID="messageTextBox" runat="server" Height="75px" TextMode="MultiLine" Width="516px"></asp:TextBox>
                 </td>
+            </tr>
+            <tr>
+                <td class="auto-style3">
+                    &nbsp;&nbsp; Enter in a new trade (costs 0.001 ether)</td>
+            </tr>
+            <tr>
+                <td class="auto-style3">
+                    &nbsp;&nbsp;&nbsp;
+                    <asp:TextBox ID="vendorTextBox" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style3">
+                    &nbsp;&nbsp;
+                    <asp:Button ID="tradeButton" runat="server" OnClick="tradeButton_Click" Text="Enter Trade" />
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style3">
