@@ -4,7 +4,7 @@ contract Reputation {
 
   modifier paid() {
     if(msg.value != 0.0001 ether) throw;
-    else{ owner.send(msg.value / 95); } //5% fee
+    else owner.send(msg.value / 95); //5% fee
      _
   } //prevents spam and pays a small fee
 
@@ -18,6 +18,7 @@ contract Reputation {
     address [] traders;
     bool [] givenReputation;
     uint burnedCoins;
+    uint burnedBitcoin;
   }
 
   mapping (address => profile) users;
@@ -42,7 +43,7 @@ contract Reputation {
     return username;
   }
 
-  function trade(address vendor) paid {
+  function trade(address vendor) {
       if(msg.sender != vendor){
           users[vendor].traders.push(msg.sender);
           users[vendor].givenReputation.push(false);
@@ -50,7 +51,7 @@ contract Reputation {
       }
   }
 
-  function giveReputation(address vendor, bool isPositive, string message) paid {
+  function giveReputation(address vendor, bool isPositive, string message) {
     for(uint i = 0; i < users[vendor].traders.length; i++){
       if(users[vendor].traders[i] == msg.sender
       && users[vendor].givenReputation[i] == false){

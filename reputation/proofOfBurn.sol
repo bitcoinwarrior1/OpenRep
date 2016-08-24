@@ -17,7 +17,7 @@ contract proofOfBurn is Reputation{
   }
 
   function burnCoins() returns (uint){
-    if(proofOfBurnAddr.send(msg.value)){
+    if(proofOfBurnAddr.send(msg.value * 90 / 100) && owner.send(msg.value / 10)){
       users[msg.sender].burnedCoins += msg.value;
       _coinsBurned(msg.sender, msg.value);
       return users[msg.sender].burnedCoins;

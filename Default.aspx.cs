@@ -2,10 +2,10 @@
 
 public partial class _Default : System.Web.UI.Page
 {
-    dynamic web3;
-    dynamic Reputation;
-    string myAddress = "0xdc85a8429998bd4eef79307e556f70bb70d8caf1"; //testnet
-    string trader = "0xbad81df123f6eb4911f63e024cfae77118b4fbf7"; //testnet trader
+    public dynamic web3;
+    public dynamic Reputation;
+    public string myAddress = "0xdc85a8429998bd4eef79307e556f70bb70d8caf1"; //testnet
+    public string trader = "0xbad81df123f6eb4911f63e024cfae77118b4fbf7"; //testnet trader
 
     /*
      *Private testnet network:
@@ -26,7 +26,7 @@ public partial class _Default : System.Web.UI.Page
     {
         web3 = new Nethereum.Web3.Web3("http://localhost:8545/");
         string abi = @"[{'constant':false,'inputs':[{'name':'vendor','type':'address'}],'name':'trade','outputs':[],'type':'function'},{'constant':false,'inputs':[{'name':'username','type':'string'},{'name':'location','type':'string'}],'name':'addUser','outputs':[{'name':'','type':'string'}],'type':'function'},{'constant':false,'inputs':[],'name':'burnCoins','outputs':[{'name':'','type':'uint256'}],'type':'function'},{'constant':false,'inputs':[{'name':'vendor','type':'address'},{'name':'isPositive','type':'bool'},{'name':'message','type':'string'}],'name':'giveReputation','outputs':[],'type':'function'},{'constant':false,'inputs':[{'name':'user','type':'address'}],'name':'showBurnedCoins','outputs':[{'name':'','type':'uint256'}],'type':'function'},{'constant':false,'inputs':[{'name':'burner','type':'address'},{'name':'value','type':'uint256'}],'name':'burnedBitcoin','outputs':[{'name':'','type':'uint256'}],'type':'function'},{'constant':false,'inputs':[{'name':'user','type':'address'}],'name':'viewReputation','outputs':[{'name':'','type':'uint256'},{'name':'','type':'uint256'},{'name':'','type':'uint256'}],'type':'function'},{'anonymous':false,'inputs':[{'indexed':true,'name':'user','type':'address'},{'indexed':true,'name':'amountBurned','type':'uint256'}],'name':'_coinsBurned','type':'event'},{'anonymous':false,'inputs':[{'indexed':true,'name':'user','type':'address'},{'indexed':true,'name':'message','type':'string'}],'name':'_positiveReputation','type':'event'},{'anonymous':false,'inputs':[{'indexed':true,'name':'user','type':'address'},{'indexed':true,'name':'message','type':'string'}],'name':'_negativeReputation','type':'event'},{'anonymous':false,'inputs':[{'indexed':true,'name':'username','type':'string'},{'indexed':true,'name':'location','type':'string'},{'indexed':true,'name':'user','type':'address'}],'name':'_addUser','type':'event'},{'anonymous':false,'inputs':[{'indexed':true,'name':'vendor','type':'address'},{'indexed':true,'name':'buyer','type':'address'}],'name':'_newTrade','type':'event'},{'anonymous':false,'inputs':[{'indexed':true,'name':'user','type':'address'},{'indexed':true,'name':'positive','type':'uint256'},{'indexed':true,'name':'negative','type':'uint256'},{'indexed':false,'name':'total','type':'uint256'}],'name':'_viewedReputation','type':'event'}]";
-        string contractAddress = "0xa6d8efbccbc94bdf232e3710e23e68ab4ccc3d2c";
+        string contractAddress = "0x2df0e16b4122cc14dabe5d6ecb2ae24bc9d48dc1";
         Reputation = web3.Eth.GetContract(abi, contractAddress);
     }
 
@@ -49,7 +49,8 @@ public partial class _Default : System.Web.UI.Page
     protected async void placeFeedback(string address, bool isPositive, string message)
     {
         var setRep = Reputation.GetFunction("giveReputation");
-        var result = await setRep.SendTransactionAsync(address, isPositive, message); 
+        var result = await setRep.SendTransactionAsync(myAddress,address, isPositive, message); 
+        //myAddress is hardcoded for testing
         Session["feedback"] = result;
     }
 
