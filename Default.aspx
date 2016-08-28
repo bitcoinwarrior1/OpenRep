@@ -43,7 +43,7 @@
     <div>
         <ul>
             <li><a href ="./Default.aspx"> Home </a></li>
-            <li><a href ="./btcRelay.aspx">bitcoin POB</a></li>
+            <li><a href ="./btcRelay.aspx">Proof Of Burn</a></li>
             <li><a href ="./newAccount.aspx"> create account</a></li>
         </ul>
     </div>

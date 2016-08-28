@@ -108,7 +108,7 @@
             <tr>
                 <td class="auto-style3">
                     &nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="ethpobButton" runat="server" Text="Submit" />
+                    <asp:Button ID="ethpobButton" runat="server" OnClick="ethpobButton_Click" Text="Submit" />
                     &nbsp;</td>
             </tr>
         </table>

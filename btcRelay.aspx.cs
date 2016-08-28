@@ -1,6 +1,9 @@
 ﻿using System;
 using NBitcoin;
 using QBitNinja.Client;
+using Nethereum.Hex.HexTypes;
+
+
 
 public partial class btcRelay : System.Web.UI.Page
 {
@@ -35,8 +38,8 @@ public partial class btcRelay : System.Web.UI.Page
 
     protected bool verifySig()
     {
-        var address = new BitcoinPubKeyAddress(btcAddrTextBox.Text);
-        bool isValidSig = address.VerifyMessage("relay", sigTextBox.Text);
+        var address = new BitcoinPubKeyAddress(btcAddrTextBox.Text.Trim());
+        bool isValidSig = address.VerifyMessage("relay", sigTextBox.Text.Trim());
         return isValidSig;
     }
 
@@ -61,7 +64,7 @@ public partial class btcRelay : System.Web.UI.Page
     {
         if (verifySig())
         {
-            getTxInfo(btcAddrTextBox.Text, txIdTextBox.Text);
+            getTxInfo(btcAddrTextBox.Text.Trim(), txIdTextBox.Text.Trim());
         }
         else
         {
@@ -69,9 +72,14 @@ public partial class btcRelay : System.Web.UI.Page
         }
     }
 
-    protected void ethpobButton_Click(object sender, EventArgs e)
+    protected async void ethpobButton_Click(object sender, EventArgs e)
     {
-        var proofOfBurn = Reputation.getFunction("burnCoins");
-        var result = Reputation.SendTransactionAsync(ethAddrTextBox.Text, ethAmountTextBox.Text);
+        /*
+        var gas = new HexBigInteger("60000");
+        var value = new HexBigInteger(ethAmountTextBox.Text.Trim());
+
+        var proofOfBurn = Reputation.GetFunction("burnCoins");
+        var result = await proofOfBurn.SendTransactionAsync(ethAddrTextBox.Text.Trim(), gas ,value);
+        */
     }
 }
