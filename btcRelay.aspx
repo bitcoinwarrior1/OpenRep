@@ -33,7 +33,7 @@
     <div>
         <ul>
             <li><a href ="./Default.aspx"> Home </a></li>
-            <li><a href ="./btcRelay.aspx">bitcoin POB</a></li>
+            <li><a href ="./btcRelay.aspx">Proof Of Burn</a></li>
             <li><a href ="./newAccount.aspx"> create account</a></li>
         </ul>
     </div>
@@ -45,7 +45,7 @@
     
         <table class="center">
             <tr>
-                <td class="auto-style1" style="font-size: x-large; font-weight: bold;">&nbsp;&nbsp; Ethereum Reputation manager</td>
+                <td class="auto-style1" style="font-size: x-large; font-weight: bold;">&nbsp;&nbsp; Ethereum and Bitcoin Proof of Burn</td>
             </tr>
             <tr>
                 <td class="auto-style1">&nbsp;&nbsp; Enter your Btc address which you used to burn coins</td>
@@ -81,6 +81,35 @@
                     &nbsp;&nbsp;
                     <asp:Button ID="submitButton" runat="server" OnClick="submitButton_Click" Text="Submit" Width="171px" />
                 </td>
+            </tr>
+            <tr>
+                <td class="auto-style3">
+                    &nbsp;&nbsp; Ethereum Proof Of Burn&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style3">
+                    &nbsp;&nbsp; Please enter your Ethereum Address&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style3">
+                    &nbsp;&nbsp;&nbsp;
+                    <asp:TextBox ID="ethAddrTextBox" runat="server"></asp:TextBox>
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style3">
+                    &nbsp;&nbsp; Please enter the amount you want to send&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style3">
+                    &nbsp;&nbsp; &nbsp;<asp:TextBox ID="ethAmountTextBox" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style3">
+                    &nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="ethpobButton" runat="server" OnClick="ethpobButton_Click" Text="Submit" />
+                    &nbsp;</td>
             </tr>
         </table>
     

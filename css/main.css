@@ -42,7 +42,7 @@ html, body, #container {
 }
 
 table{
-    background-color:lightgrey;
+    background-color:lightgoldenrodyellow;
     align-content:center;
     text-align:center;
 }
@@ -54,7 +54,9 @@ table.center {
 
 body{
   background-position: center relative;
-  background:url("http://bgfons.com/upload/ornaments_texture1145.jpg");
+   /*http://bgfons.com/upload/ornaments_texture1145.jpg*/
+   background:url("http://photos2.meetupstatic.com/photos/event/d/8/3/8/highres_226135352.jpeg")space no-repeat;
+    
 }
 
 html{

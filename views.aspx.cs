@@ -9,6 +9,8 @@ public partial class views : System.Web.UI.Page
         {
             displayResults.Text = "feedback Placed: " + Session["feedback"].ToString()
             + Environment.NewLine + "User's Feedback" + Session["views"].ToString();
+
+            Session["feedback"] = "";
         }
         catch //crude, needs to be improved
         {

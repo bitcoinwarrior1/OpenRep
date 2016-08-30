@@ -16,13 +16,13 @@ public partial class reputation_newAccount : System.Web.UI.Page
 
     protected async void createAccount(string myAddress, string newUser, string location)
     {
-        var createUser = Reputation.GetFunction("createUser");
+        var createUser = Reputation.GetFunction("addUser");
         var result = await createUser.SendTransactionAsync(myAddress, newUser, location);
-        statusLabel.Text = "Account created!";
+        statusLabel.Text.Trim() = "Account created!";
     }
 
     protected void submitButton_Click(object sender, EventArgs e)
     {
-        createAccount(addressTextBox.Text, usernameTextBox.Text, locationTextBox.Text);
+        createAccount(addressTextBox.Text.Trim(), usernameTextBox.Text.Trim(), locationTextBox.Text.Trim());
     }
 }
