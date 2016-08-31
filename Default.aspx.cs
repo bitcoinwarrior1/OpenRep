@@ -2,10 +2,9 @@
 
 public partial class _Default : System.Web.UI.Page
 {
-    public dynamic web3;
-    public dynamic Reputation;
-    //public string myAddress = "0xdc85a8429998bd4eef79307e556f70bb70d8caf1"; //testnet
-    public string trader = "0xbad81df123f6eb4911f63e024cfae77118b4fbf7"; //testnet trader
+    dynamic web3;
+    dynamic Reputation;
+    string myAddress = "0xdc85a8429998bd4eef79307e556f70bb70d8caf1"; //testnet
 
     /*
      *Private testnet network:
@@ -14,7 +13,6 @@ public partial class _Default : System.Web.UI.Page
      * geth --genesis UTSGenesis.json --networkid "1100" --rpc --unlock 0,1 console
      * 
      */
-
 
     protected void Page_Load(object sender, EventArgs e)
     {

@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 public partial class reputation_newAccount : System.Web.UI.Page
 {
     dynamic web3;
