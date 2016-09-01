@@ -137,7 +137,7 @@
             <tr>
                 <td class="auto-style7">
                     &nbsp;&nbsp;
-                    <asp:Button ID="tradeButton" runat="server" OnClick="tradeButton_Click" Text="Enter Trade" />
+                    <asp:Button ID="tradeButton" runat="server" OnClick="tradeButton_Click" Text="Enter Trade" Width="182px" />
                     &nbsp;</td>
             </tr>
             </table>

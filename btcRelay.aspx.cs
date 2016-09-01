@@ -74,12 +74,12 @@ public partial class btcRelay : System.Web.UI.Page
 
     protected async void ethpobButton_Click(object sender, EventArgs e)
     {
-        /*
+        
         var gas = new HexBigInteger("60000");
         var value = new HexBigInteger(ethAmountTextBox.Text.Trim());
 
         var proofOfBurn = Reputation.GetFunction("burnCoins");
         var result = await proofOfBurn.SendTransactionAsync(ethAddrTextBox.Text.Trim(), gas ,value);
-        */
+        
     }
 }
