@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nethereum.ABI.FunctionEncoding.Attributes;
+using System;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -24,8 +25,8 @@ public partial class _Default : System.Web.UI.Page
 
     protected async void getReputation(string address)
     {
-        var getRep = Reputation.GetFunction("viewReputation"); 
-        var result = await getRep.CallAsync<int>(address);
+        var getRep = Reputation.GetFunction("viewReputation");
+        var result = await getRep.CallDeserializingToObjectAsync<reputation>(address);
         Session["views"] = result;
         Response.Redirect("views.aspx", false);
     }
@@ -66,5 +67,22 @@ public partial class _Default : System.Web.UI.Page
     protected void tradeButton_Click(object sender, EventArgs e)
     {
         enterTrade(myAddressTextBox.Text.Trim(), vendorTextBox.Text.Trim());
+    }
+
+    [FunctionOutput]
+
+    public class reputation
+    {
+        [Parameter("uint", "positive", 1)]
+
+        public uint positive { get; set; }
+
+        [Parameter("uint", "negative", 2)]
+
+        public uint negative { get; set; }
+
+        [Parameter("uint", "total", 3)]
+
+        public uint total { get; set; }
     }
 }
