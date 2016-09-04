@@ -38,6 +38,11 @@ public partial class _Default : System.Web.UI.Page
         statusLabel.Text = "trade entered, thank you!";
     }
 
+    protected void showBurnedCoins()
+    {
+
+    }
+
     protected async void placeFeedback(string myAddress, string address, bool isPositive, string message)
     {
         var setRep = Reputation.GetFunction("giveReputation");
@@ -73,16 +78,20 @@ public partial class _Default : System.Web.UI.Page
 
     public class reputation
     {
-        [Parameter("uint", "positive", 1)]
 
+        [Parameter("uint", "positive", 1)]
         public uint positive { get; set; }
 
         [Parameter("uint", "negative", 2)]
-
         public uint negative { get; set; }
 
         [Parameter("uint", "total", 3)]
-
         public uint total { get; set; }
+
+        [Parameter("uint", "burnedCoins", 4)]
+        public uint burnedCoins { get; set; }
+
+        [Parameter("uint", "burnedBitcoin", 5)]
+        public uint burnedBitcoin { get; set; }
     }
 }

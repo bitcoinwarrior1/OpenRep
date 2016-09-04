@@ -27,7 +27,8 @@ contract Reputation {
   event _negativeReputation(address indexed user, string indexed message);
   event _addUser(string indexed username, string indexed location, address indexed user);
   event _newTrade(address indexed vendor, address indexed buyer);
-  event _viewedReputation(address indexed user, uint indexed positive, uint indexed negative, uint total);
+  event _viewedReputation(address indexed user, uint indexed positive, uint indexed negative
+  ,uint total, uint burnedEth, uint burnedCoins);
 
   function(){ if(msg.value != 0.001 ether) throw; } //if not paying the fee then throw and refund
 
@@ -69,9 +70,11 @@ contract Reputation {
     }
   }
 
-  function viewReputation(address user) returns (uint, uint, uint){
-    _viewedReputation(user,users[user].positive, users[user].negative, users[user].total);
-    return(users[user].positive, users[user].negative, users[user].total);
+  function viewReputation(address user) returns (uint, uint, uint, uint, uint){
+    _viewedReputation(user, users[user].positive, users[user].negative,
+    users[user].total,users[user].burnedCoins, users[user].burnedBitcoin);
+    return(users[user].positive, users[user].negative, users[user].total,
+    users[user].burnedCoins, users[user].burnedBitcoin);
   }
 
 }
