@@ -3,8 +3,6 @@ using NBitcoin;
 using QBitNinja.Client;
 using Nethereum.Hex.HexTypes;
 
-
-
 public partial class btcRelay : System.Web.UI.Page
 {
     dynamic btcRelayContract;

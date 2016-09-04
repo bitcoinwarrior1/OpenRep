@@ -38,11 +38,6 @@ public partial class _Default : System.Web.UI.Page
         statusLabel.Text = "trade entered, thank you!";
     }
 
-    protected void showBurnedCoins()
-    {
-
-    }
-
     protected async void placeFeedback(string myAddress, string address, bool isPositive, string message)
     {
         var setRep = Reputation.GetFunction("giveReputation");
