@@ -5,7 +5,7 @@ contract Reputation {
   modifier paid() {
     if(msg.value != 0.0001 ether) throw;
     else owner.send(msg.value / 95); //5% fee
-     _
+     _;
   } //prevents spam and pays a small fee
 
   struct profile {
