@@ -3,7 +3,7 @@ A solidity smart contract based reputation system with UI
 
 To use this website please run your geth node enabling RPC and unlocking the accounts you want to use.
 
-###Example: geth --testnet --unlock 0,1,9 --rpc console
+###Example: geth --unlock 0,1,9 --rpc console
 
 currently deployed on the ethereum test net and live net network:
 
