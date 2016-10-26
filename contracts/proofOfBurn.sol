@@ -9,7 +9,7 @@ contract proofOfBurn is Reputation{
       if(msg.sender != 0x41f274c0023f83391de4e0733c609df5a124c3d4){
           throw;
       }
-      _
+      _;
   }
 
   function showBurnedCoins(address user) returns (uint){
