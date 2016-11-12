@@ -1,6 +1,6 @@
 contract Reputation {
 
-  address owner;
+  address owner = 0x8344A845B76c02797Fbf3185Cc852957d148b8c3; //hardcoded as geth node stopped working and metamask doesn't allow imports
 
   modifier paid() {
     if(msg.value != 0.0001 ether) throw;
@@ -31,8 +31,6 @@ contract Reputation {
   ,uint total, uint burnedEth, uint burnedCoins);
 
   function(){ if(msg.value != 0.001 ether) throw; } //if not paying the fee then throw and refund
-
-  function Reputation(){ owner = msg.sender; }
 
   function addUser(string username, string location) returns (string) {
     users[msg.sender].positive = 0;
