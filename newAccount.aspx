@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Async="true" AutoEventWireup="true" CodeFile="newAccount.aspx.cs" Inherits="reputation_newAccount" %>
+﻿<%@ Page Language="C#" Async="true" AutoEventWireup="true" CodeFile="newAccount.aspx.cs" Inherits="reputation_newAccount" Debug="true" %>
 
 <!DOCTYPE html>
 

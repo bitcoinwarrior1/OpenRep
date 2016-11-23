@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Async="true" AutoEventWireup="true" CodeFile="btcRelay.aspx.cs" Inherits="btcRelay" %>
+﻿<%@ Page Language="C#" Async="true" AutoEventWireup="true" CodeFile="btcRelay.aspx.cs" Inherits="btcRelay" Debug="true" %>
 
 <!DOCTYPE html>
 
