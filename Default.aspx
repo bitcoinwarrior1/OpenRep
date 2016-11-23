@@ -56,7 +56,7 @@
     
         <table class="center">
             <tr>
-                <td class="auto-style6" style="font-size: x-large; font-weight: bold;">&nbsp;&nbsp; Ethereum Reputation manager<br />
+                <td class="auto-style6" style="font-size: x-large; font-weight: bold;">&nbsp;&nbsp; OpenRep - Decentralized Reputation<br />
 &nbsp;&nbsp;
                     <asp:Label ID="statusLabel" runat="server" ForeColor="#FF3300"></asp:Label>
                 </td>
